@@ -1,0 +1,3 @@
+<nz-radio-group [(ngModel)]="config.propValue" [class.absoulte]="absoulte" [ngStyle]="vStyle">
+    <label nz-radio [nzValue]="item.value" *ngFor="let item of config.componentData">{{item.value}}</label>
+</nz-radio-group>

@@ -1,0 +1,14 @@
+.attr-list {
+  overflow: auto;
+  padding: 20px;
+  padding-top: 0;
+  height: 100%;
+}
+
+.radio-items {
+  .radio-item-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+}

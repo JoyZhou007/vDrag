@@ -1,0 +1,6 @@
+<nz-select style="width: 100%;" nzMode="tags" nzShowSearch nzAllowClear [(ngModel)]="config.propValue"
+    [class.absoulte]="absoulte" [ngStyle]="vStyle">
+    <ng-container *ngFor="let item of config.componentData">
+        <nz-option [nzLabel]="item.value" [nzValue]="item.value"></nz-option>
+    </ng-container>
+</nz-select>

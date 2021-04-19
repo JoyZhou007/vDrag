@@ -1,0 +1,57 @@
+<div class="editor" id="editor" [class.edit]="isEdit" [style.width.px]="componentDataService.canvasStyleData.width"
+    [style.height.px]="componentDataService.canvasStyleData.height" (contextmenu)="handleContextMenu($event)">
+    <!--页面组件列表展示-->
+    <shape *ngFor="let item of componentDataService.componentData; index as i" [defaultStyle]="item.style"
+        [active]="item.id === componentDataService?.curComponent?.id" [element]="item" [index]="i">
+        <ng-container [ngSwitch]="item.component">
+            <!-- 按钮 -->
+            <ng-container *ngSwitchCase="'v-button'">
+                <v-button [config]="item" [vStyle]="getComponentStyle(item.style)">
+                </v-button>
+            </ng-container>
+            <!-- 文字 -->
+            <ng-container *ngSwitchCase="'v-text'">
+                <v-text class="component" (OutInput)="handleInput($event,item)" [propValue]="item.propValue"
+                    [vStyle]="getComponentStyle(item.style)">
+                </v-text>
+            </ng-container>
+            <!-- 单选框 -->
+            <ng-container *ngSwitchCase="'v-radio'">
+                <v-radio class="component" [config]="item" [config]="item" [vStyle]="getComponentStyle(item.style)">
+                </v-radio>
+            </ng-container>
+            <!-- 验光表格 -->
+            <ng-container *ngSwitchCase="'v-table'">
+                <v-table class="component" [config]="item" [vStyle]="getComponentStyle(item.style)">
+                </v-table>
+            </ng-container>
+            <!-- 文本域 -->
+            <ng-container *ngSwitchCase="'v-textarea'">
+                <v-textarea class="component" [config]="item" [vStyle]="getComponentStyle(item.style)">
+                </v-textarea>
+            </ng-container>
+            <!-- 图片 -->
+            <ng-container *ngSwitchCase="'v-picture'">
+                <v-picture class="component" [config]="item" [vStyle]="getComponentStyle(item.style)">
+                </v-picture>
+            </ng-container>
+            <!-- 下拉框 -->
+            <ng-container *ngSwitchCase="'v-select'">
+                <v-select class="component" [config]="item" [vStyle]="getComponentStyle(item.style)">
+                </v-select>
+            </ng-container>
+            <!-- 相册 -->
+            <ng-container *ngSwitchCase="'v-album'">
+                <v-album class="component" [config]="item" [vStyle]="getComponentStyle(item.style)">
+                </v-album>
+            </ng-container>
+            <ng-container *ngSwitchDefault>
+
+            </ng-container>
+        </ng-container>
+    </shape>
+    <!-- 右击菜单 -->
+    <context-menu></context-menu>
+    <!-- 标线 -->
+    <Markline></Markline>
+</div>

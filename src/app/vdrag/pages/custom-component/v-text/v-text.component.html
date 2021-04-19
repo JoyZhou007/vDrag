@@ -1,0 +1,7 @@
+<textarea [class.absoulte]="absoulte" [ngStyle]="vStyle" *ngIf="componentDataService.editMode == 'edit' else e"
+    [(ngModel)]="propValue" class="component text textarea" (ngModelChange)="handleInput()"></textarea>
+<ng-template #e>
+    <div class="text disabled" [ngStyle]="vStyle" [class.absoulte]="absoulte">
+        <div *ngFor="let text of propValue.split('\n')">{{ text }}</div>
+    </div>
+</ng-template>

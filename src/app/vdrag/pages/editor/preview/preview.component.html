@@ -1,0 +1,11 @@
+<div class="bg" *ngIf="isShowPreview">
+    <i nz-icon nzType="close" nzTheme="outline" class="close" (click)="close()"></i>
+    <div class="canvas-container">
+        <div class="canvas"
+            [ngStyle]="{ width: componentDataService.canvasStyleData.width + 'px', height: componentDataService.canvasStyleData.height + 'px' }">
+
+            <Component-wrapper *ngFor="let item of componentDataService.componentData" [config]="item">
+            </Component-wrapper>
+        </div>
+    </div>
+</div>
