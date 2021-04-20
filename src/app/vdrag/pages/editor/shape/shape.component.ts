@@ -78,7 +78,6 @@ export class ShapeComponent implements OnInit {
     ) {
       e.preventDefault();
     }
-
     e.stopPropagation();
     this.componentDataService.curComponent = this.element;
     this.componentDataService.curComponentIndex = this.index;

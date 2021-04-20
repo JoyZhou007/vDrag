@@ -4,4 +4,22 @@
         <i class="{{item.icon}}"></i>
         <span>{{ item.label }}</span>
     </div>
+    <nz-collapse style="width: 100%;">
+        <nz-collapse-panel [nzHeader]="'RFields'">
+            <button class="mb-10" nz-button nzBlock="true"
+                *ngFor="let field of componentDataService.RFieldCompnents; index as i" draggable="true"
+                (dragstart)="handleDragStart($event)" [attr.data-index]="i" [attr.data-type]="'RFields'">
+                <!-- <i class="{{item.icon}}"></i> -->
+                <span>{{ field?.remoteData?.name }}</span>
+            </button>
+        </nz-collapse-panel>
+        <nz-collapse-panel [nzHeader]="'EFields'">
+            <button class="mb-10" nz-button nzBlock="true"
+                *ngFor="let field of componentDataService.EFieldCompnents; index as i" draggable="true"
+                (dragstart)="handleDragStart($event)" [attr.data-index]="i" [attr.data-type]="'EFields'">
+                <!-- <i class="{{item.icon}}"></i> -->
+                <span>{{ field?.remoteData?.name }}</span>
+            </button>
+        </nz-collapse-panel>
+    </nz-collapse>
 </div>

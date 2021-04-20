@@ -33,6 +33,17 @@
             <v-album class="component" [absoulte]="true" [config]="config" [vStyle]="getComponentStyle(config.style)">
             </v-album>
         </ng-container>
+        <!-- RField -->
+        <ng-container *ngSwitchCase="'v-rfield'">
+            <v-rfield class="component" [absoulte]="true" [propValue]="config.propValue"
+                [vStyle]="getComponentStyle(config.style)">
+            </v-rfield>
+        </ng-container>
+        <!-- EField -->
+        <ng-container *ngSwitchCase="'v-efield'">
+            <v-efield class="component" [config]="config" [vStyle]=" getComponentStyle(config.style)">
+            </v-efield>
+        </ng-container>
         <ng-container *ngSwitchDefault>output2</ng-container>
     </ng-container>
 </div>

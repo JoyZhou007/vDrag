@@ -20,6 +20,8 @@ import { VTextareaComponent } from './pages/custom-component/v-textarea/v-textar
 import { VPictureComponent } from './pages/custom-component/v-picture/v-picture.component';
 import { VSelectComponent } from './pages/custom-component/v-select/v-select.component';
 import { VAlbumComponent } from './pages/custom-component/v-album/v-album.component';
+import { VRFieldComponent } from './pages/custom-component/v-rfield/v-rfield.component';
+import { VEFieldComponent } from './pages/custom-component/v-efield/v-efield.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +44,8 @@ import { VAlbumComponent } from './pages/custom-component/v-album/v-album.compon
     VPictureComponent,
     VSelectComponent,
     VAlbumComponent,
+    VRFieldComponent,
+    VEFieldComponent,
   ],
   imports: [BrowserAnimationsModule, SharedModule],
   exports: [NgxVisualDragComponent],

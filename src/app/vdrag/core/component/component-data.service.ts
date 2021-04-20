@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { Subject } from 'rxjs';
@@ -11,6 +12,7 @@ import {
 } from '../../types/component-type';
 import generateID from '../../utils/generateID';
 import { deepCopy, swap } from '../../utils/utils';
+import componentList from '../custom-component/component-list';
 
 @Injectable({
   providedIn: 'root',
@@ -23,6 +25,9 @@ export class ComponentDataService {
   }; // 页面全局数据
   curComponent: ComponentBaseData;
   curComponentIndex: number;
+  componentList: ComponentBaseData[] = componentList;
+  RFieldCompnents: ComponentBaseData[] = []; // 侧边栏中的Rfields
+  EFieldCompnents: ComponentBaseData[] = []; // 侧边栏中的Efields
   $shapeStyle: Subject<ComponentBaseStyle> = new Subject();
   contextmenu: {
     show: boolean;
@@ -42,7 +47,7 @@ export class ComponentDataService {
   copyData: CopyData;
   editMode: EditModeType = 'edit';
   $storageData = new Subject<StorageData>();
-  constructor(private message: NzMessageService) {
+  constructor(private message: NzMessageService, private http: HttpClient) {
     this.initData();
     this.$shapeStyle.subscribe((x) => {
       if (x.top) this.curComponent.style.top = x.top;
@@ -53,7 +58,77 @@ export class ComponentDataService {
     });
   }
 
-  initData() {}
+  initData() {
+    this.setBFields();
+  }
+
+  setBFields() {
+    this.http
+      .get('http://ngstest.qiusuogroup.cn:9000/api/configuration/bindingFields')
+      .subscribe((x: ApiEntity) => {
+        if (x.isSucceed) {
+          const list: bField[] = x.data;
+          //初始化RField 和 Efield
+          list.forEach((x) => {
+            if (x.type === 0) {
+              this.RFieldCompnents.push({
+                id: null,
+                component: 'v-rfield',
+                componentData: '',
+                label: x.key,
+                description: '',
+                propValue: x.key,
+                icon: 'icon-edit',
+                animations: [],
+                events: {},
+                isBField: true,
+                remoteData: deepCopy(x),
+                style: {
+                  width: 200,
+                  height: 33,
+                  fontSize: 14,
+                  fontWeight: 500,
+                  lineHeight: '',
+                  letterSpacing: 0,
+                  textAlign: '',
+                  color: '',
+                  borderWidth: '',
+                  borderColor: '',
+                  rotate: '',
+                },
+              });
+            } else {
+              this.EFieldCompnents.push({
+                id: null,
+                component: 'v-efield',
+                componentData: '',
+                label: x.key,
+                description: '',
+                propValue: '',
+                icon: 'icon-edit',
+                animations: [],
+                events: {},
+                isBField: true,
+                remoteData: deepCopy(x),
+                style: {
+                  width: 200,
+                  height: 100,
+                  fontSize: 14,
+                  fontWeight: 500,
+                  lineHeight: '',
+                  letterSpacing: 0,
+                  textAlign: '',
+                  color: '',
+                  borderWidth: '',
+                  borderColor: '',
+                  rotate: '',
+                },
+              });
+            }
+          });
+        }
+      });
+  }
 
   setMode(type: EditModeType) {
     this.editMode = type;
@@ -245,4 +320,38 @@ export class ComponentDataService {
   setEditMode(type: EditModeType) {
     this.editMode = type;
   }
+
+  /**
+   * 恢复customFields的值
+   * @param list customFields
+   */
+  reStoreCustomFields(list: { key: string; value: string }[]) {
+    list.forEach((x) => {
+      this.componentData.forEach((y) => {
+        if (x.key === y.label) {
+          y.propValue = x.value;
+        }
+      });
+    });
+  }
 }
+
+export interface ApiEntity {
+  data: any;
+  isSucceed: boolean;
+  message: string;
+  code: string;
+}
+
+/**
+ * bingFields 实体
+ */
+export interface bField {
+  description: string;
+  id: string;
+  key: string;
+  name: string;
+  type: bFieldType;
+}
+
+type bFieldType = 0 | 1; // 0 = RField, 1 = EField

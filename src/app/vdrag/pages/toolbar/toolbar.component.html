@@ -8,6 +8,7 @@
         <button nz-button class="mr-20" (click)="save()">保存</button>
         <button nz-button (click)="clearCanvas()">清空画布</button>
         <div class="canvas-config">
+            <input nz-input style="width: 100px;" [(ngModel)]="name" placeholder="名称">
             <span>画布大小(px):</span>
             <input nz-input [(ngModel)]="componentDataService.canvasStyleData.width">
             <span>*</span>

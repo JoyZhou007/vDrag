@@ -1,8 +1,14 @@
 <div class="attr-list">
     <div nz-row class="mb-10">
+        <div nz-col nzSpan="24" class="mb-10">标签名</div>
+        <div nz-col nzSpan="24">
+            <input nz-input disabled [(ngModel)]="componentDataService.curComponent.label">
+        </div>
+    </div>
+    <div nz-row class="mb-10">
         <div nz-col nzSpan="24" class="mb-10">标识</div>
         <div nz-col nzSpan="24">
-            <input nz-input [(ngModel)]="componentDataService.curComponent.flag">
+            <input nz-input [(ngModel)]="componentDataService.curComponent.description">
         </div>
     </div>
     <div nz-row *ngFor="let key of styleKeys" class="mb-10">
@@ -53,7 +59,8 @@
                     </div>
                 </div>
                 <div *ngSwitchDefault>
-                    <textarea nz-input [(ngModel)]="componentDataService.curComponent.propValue"
+                    <textarea nz-input [disabled]="componentDataService.curComponent.isBField"
+                        [(ngModel)]="componentDataService.curComponent.propValue"
                         [nzAutosize]="{ minRows: 2, maxRows: 6 }"></textarea>
                 </div>
             </div>

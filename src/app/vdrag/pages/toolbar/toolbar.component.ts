@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd/message';
 import { ComponentDataService } from '../../core/component/component-data.service';
@@ -10,9 +11,11 @@ import { ComponentDataService } from '../../core/component/component-data.servic
 })
 export class ToolbarComponent implements OnInit {
   isShowPreview: boolean = false;
+  name: string;
   constructor(
     public componentDataService: ComponentDataService,
-    private message: NzMessageService
+    private message: NzMessageService,
+    private http: HttpClient
   ) {}
 
   ngOnInit(): void {}
@@ -27,6 +30,23 @@ export class ToolbarComponent implements OnInit {
 
   save() {
     this.componentDataService.save();
+    const content = {
+      canvasData: this.componentDataService.componentData,
+      canvasStyle: this.componentDataService.canvasStyleData,
+    };
+    const formData = {
+      id: '0ef0af0a-12f6-48be-837f-70e9efd9c7e0',
+      type: 3,
+      name: '青光眼筛查报告',
+      description: '青光眼筛查报告',
+      content: JSON.stringify(content),
+    };
+    this.http
+      .post(
+        'http://ngstest.qiusuogroup.cn:9000/api/configuration/template',
+        formData
+      )
+      .subscribe();
   }
 
   clearCanvas() {

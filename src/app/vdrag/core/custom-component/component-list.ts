@@ -11,9 +11,10 @@ const list: ComponentBaseData[] = [
   {
     id: null,
     component: 'v-text',
+    isBField: false,
     componentData: '',
     label: '文字',
-    flag: '',
+    description: '',
     propValue: '文字',
     icon: 'icon-edit',
     animations: [],
@@ -29,12 +30,14 @@ const list: ComponentBaseData[] = [
       color: '',
       borderWidth: '',
       borderColor: '',
+      rotate: '',
     },
   },
   {
     component: 'v-button',
     id: null,
-    flag: '',
+    isBField: false,
+    description: '',
     componentData: '',
     label: '按钮',
     propValue: '按钮',
@@ -58,7 +61,8 @@ const list: ComponentBaseData[] = [
   },
   {
     id: null,
-    flag: '',
+    description: '',
+    isBField: false,
     component: 'v-picture',
     componentData: '',
     label: '图片',
@@ -74,7 +78,8 @@ const list: ComponentBaseData[] = [
   },
   {
     id: null,
-    flag: '',
+    description: '',
+    isBField: false,
     component: 'v-radio',
     componentData: [
       {
@@ -98,7 +103,8 @@ const list: ComponentBaseData[] = [
   },
   {
     id: null,
-    flag: '',
+    description: '',
+    isBField: false,
     component: 'v-table',
     componentData: '',
     label: '验光表格',
@@ -123,7 +129,8 @@ const list: ComponentBaseData[] = [
   },
   {
     id: null,
-    flag: '',
+    description: '',
+    isBField: false,
     component: 'v-textarea',
     componentData: '',
     label: '文本域',
@@ -146,7 +153,8 @@ const list: ComponentBaseData[] = [
   },
   {
     id: null,
-    flag: '',
+    description: '',
+    isBField: false,
     component: 'v-select',
     componentData: [
       {
@@ -178,7 +186,8 @@ const list: ComponentBaseData[] = [
   },
   {
     id: null,
-    flag: '',
+    description: '',
+    isBField: false,
     component: 'v-album',
     componentData: '',
     label: '相册',

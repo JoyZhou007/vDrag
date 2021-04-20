@@ -1,14 +1,18 @@
-export interface ComponentBaseData {
+import { bField } from '../core/component/component-data.service';
+
+export class ComponentBaseData {
   component: string; // 组件名称
   label: string; // 左侧组件列表中显示的名字
   propValue: any; // 组件所使用的值
   icon: string; // 左侧组件列表中显示的名字
   animations: any[]; // 动画列表
   events: Object; // 事件列表
-  componentData: any; // 配置组件所需要的值
-  flag: any; //标识
+  componentData: any; // 配置组件所需要的值,如下拉框的选项
+  description: any; //标识
   style: ComponentBaseStyle;
   id: number;
+  isBField: boolean; // 是不是bindingFields
+  remoteData?: bField; // bindingFields 的值
 }
 
 export interface ComponentBaseStyle {
