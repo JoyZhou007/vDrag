@@ -74,7 +74,8 @@ export class ShapeComponent implements OnInit {
   handleMouseDownOnShape(e) {
     if (
       this.element.component != 'v-text' &&
-      this.element.component != 'v-textarea'
+      this.element.component != 'v-textarea' &&
+      this.element.component !== 'v-efield'
     ) {
       e.preventDefault();
     }

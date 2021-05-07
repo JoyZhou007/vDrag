@@ -4,8 +4,12 @@
         <div class="canvas"
             [ngStyle]="{ width: componentDataService.canvasStyleData.width + 'px', height: componentDataService.canvasStyleData.height + 'px' }">
 
-            <Component-wrapper *ngFor="let item of componentDataService.componentData" [config]="item">
-            </Component-wrapper>
+                <ng-container *ngFor="let item of componentDataService.componentData">
+                    <div class="component-wrapper" [ngStyle]="{top: item.style.top+ 'px',left:item.style.left+ 'px' }">
+                        <Component-wrapper [config]="item">
+                        </Component-wrapper>
+                    </div>
+                </ng-container>
         </div>
     </div>
 </div>

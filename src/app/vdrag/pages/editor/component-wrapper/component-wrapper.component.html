@@ -2,23 +2,23 @@
     <!-- <component class="conponent" :is="config.component" :style="getStyle(config.style)" :propValue="config.propValue" /> -->
     <ng-container [ngSwitch]="config.component">
         <ng-container *ngSwitchCase="'v-button'">
-            <v-button [config]="config" [absoulte]="true" [vStyle]="getComponentStyle(config.style)">
+            <v-button [config]="config"  [vStyle]="getComponentStyle(config.style)">
             </v-button>
         </ng-container>
         <ng-container *ngSwitchCase="'v-text'">
-            <v-text [propValue]="config.propValue" [absoulte]="true" [vStyle]="getComponentStyle(config.style)">
+            <v-text [propValue]="config.propValue"  [vStyle]="getComponentStyle(config.style)">
             </v-text>
         </ng-container>
         <ng-container *ngSwitchCase="'v-radio'">
-            <v-radio class="component" [absoulte]="true" [config]="config" [vStyle]="getComponentStyle(config.style)">
+            <v-radio class="component"  [config]="config" [vStyle]="getComponentStyle(config.style)">
             </v-radio>
         </ng-container>
         <ng-container *ngSwitchCase="'v-table'">
-            <v-table class="component" [absoulte]="true" [config]="config" [vStyle]="getComponentStyle(config.style)">
+            <v-table class="component"  [config]="config" [vStyle]="getComponentStyle(config.style)">
             </v-table>
         </ng-container>
         <ng-container *ngSwitchCase="'v-picture'">
-            <v-picture class="component" [absoulte]="true" [config]="config" [vStyle]="getComponentStyle(config.style)">
+            <v-picture class="component"  [config]="config" [vStyle]="getComponentStyle(config.style)">
             </v-picture>
         </ng-container>
         <ng-container *ngSwitchCase="'v-textarea'">
@@ -30,12 +30,12 @@
             </v-select>
         </ng-container>
         <ng-container *ngSwitchCase="'v-album'">
-            <v-album class="component" [absoulte]="true" [config]="config" [vStyle]="getComponentStyle(config.style)">
+            <v-album class="component"  [config]="config" [vStyle]="getComponentStyle(config.style)">
             </v-album>
         </ng-container>
         <!-- RField -->
         <ng-container *ngSwitchCase="'v-rfield'">
-            <v-rfield class="component" [absoulte]="true" [propValue]="config.propValue"
+            <v-rfield class="component"  [propValue]="config.propValue"
                 [vStyle]="getComponentStyle(config.style)">
             </v-rfield>
         </ng-container>

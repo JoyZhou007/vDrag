@@ -24,6 +24,9 @@
       background: #fff;
       position: relative;
       flex-shrink: 0;
+      .component-wrapper {
+        position: absolute;
+      }
     }
   }
 
